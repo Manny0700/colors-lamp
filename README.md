@@ -37,14 +37,20 @@ The goal was to build a maintainable and scalable frontend that integrates effec
 ## Project Structure
 colors-lamp/
 │
+├── api/
+│   ├── Login.php
+│   ├── SearchColors.php
+│   └── AddColor.php
+│
 ├── public/
-│ ├── index.html
-│ ├── color.html
-│ └── js/
-│ └── (JavaScript files)
+│   ├── index.html
+│   ├── color.html
+│   └── js/
+│       └── code.js
 │
 ├── README.md
 └── LICENSE
+
 
 
 ### Directory Description
