@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+
+actor User
+
+rectangle "COLORS Web App" {
+  User --> (Register)
+  User --> (Login)
+  User --> (Search Contacts)
+  User --> (Add Contact)
+  User --> (Edit Contact)
+  User --> (Delete Contact)
+  User --> (Logout)
+}
+
+@enduml

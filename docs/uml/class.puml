@@ -1,0 +1,20 @@
+@startuml
+
+class User {
+  userId : int
+  login : string
+  password : string
+}
+
+class Contact {
+  contactId : int
+  firstName : string
+  lastName : string
+  phone : string
+  email : string
+  userId : int
+}
+
+User "1" -- "0..*" Contact : owns
+
+@enduml

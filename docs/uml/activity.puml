@@ -1,0 +1,20 @@
+
+if (Add Contact?) then (Yes)
+  :Enter Contact Details;
+  :Save Contact;
+endif
+
+if (Edit Contact?) then (Yes)
+  :Modify Contact Details;
+  :Update Contact;
+endif
+
+if (Delete Contact?) then (Yes)
+  :Delete Contact;
+endif
+
+:Logout;
+
+stop
+
+@enduml
