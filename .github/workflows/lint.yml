@@ -24,7 +24,12 @@ jobs:
         run: npx eslint .
 
       - name: Run Stylelint (CSS)
-        run: npx stylelint "**/*.css"
+  run: |
+    if find . -name "*.css" | grep -q .; then
+      npx stylelint "**/*.css"
+    else
+      echo "No CSS files found, skipping Stylelint."
+    fi
 
       - name: Run HTMLHint
         run: npx htmlhint "**/*.html"
