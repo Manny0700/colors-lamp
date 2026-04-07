@@ -1,0 +1,30 @@
+name: Lint Code
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint (JS)
+        run: npx eslint .
+
+      - name: Run Stylelint (CSS)
+        run: npx stylelint "**/*.css"
+
+      - name: Run HTMLHint
+        run: npx htmlhint "**/*.html"
