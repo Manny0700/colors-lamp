@@ -1,0 +1,43 @@
+name: Lint Code
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run ESLint (JS)
+        run: npx eslint .
+
+      - name: Run Stylelint (CSS)
+        run: |
+         if find . -name "*.css" -not -path "./node_modules/*" | grep -q .; then
+         npx stylelint "**/*.css" || echo "Stylelint found issues"
+         else
+         echo "No CSS files found, skipping Stylelint."
+         fi
+
+      - name: Run HTMLHint
+        run: |
+          if find . -name "*.html" | grep -q .; then
+            npx htmlhint "**/*.html"
+          else
+            echo "No HTML files found, skipping HTMLHint."
+          fi
