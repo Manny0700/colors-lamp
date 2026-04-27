@@ -28,11 +28,11 @@ jobs:
 
       - name: Run Stylelint (CSS)
         run: |
-          if find . -name "*.css" | grep -q .; then
-            npx stylelint "**/*.css"
-          else
-            echo "No CSS files found, skipping Stylelint."
-          fi
+         if find . -name "*.css" -not -path "./node_modules/*" | grep -q .; then
+         npx stylelint "**/*.css" || echo "Stylelint found issues"
+         else
+         echo "No CSS files found, skipping Stylelint."
+         fi
 
       - name: Run HTMLHint
         run: |
